@@ -1,0 +1,7 @@
+- name: Get master status
+  mysql_replication: login_user={{console_db_user}} login_password={{console_db_pass}} mode=getmaster
+  register: master
+- name: print master status
+  debug: var=master
+  when: ( master1_host in inventory_hostname) or  (master2_host in inventory_hostname)
+  tags: "master_status"

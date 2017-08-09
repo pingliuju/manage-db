@@ -1,0 +1,11 @@
+- name: Get mysql-slave status
+  mysql_replication: login_user={{console_db_user}} login_password={{console_db_pass}} mode=getslave
+  register: slave
+
+- name: print slave status
+  debug: var=slave
+  tags: "slave_status"
+
+- name: start slave in slave to start the replication 
+  mysql_replication: login_user={{console_db_user}} login_password={{console_db_pass}} mode=startslave 
+  when: IO and SQL

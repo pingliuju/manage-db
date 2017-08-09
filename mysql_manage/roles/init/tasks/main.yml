@@ -1,0 +1,7 @@
+- name: Install/upgrade pip packages
+  yum:
+    name: '{{ item }}'
+    state: latest
+  with_items:
+    - gcc
+

@@ -1,0 +1,94 @@
+
+PLAY ***************************************************************************
+
+TASK [setup] *******************************************************************
+ok: [hd1-db3]
+
+TASK [mysql-master : Get master status] ****************************************
+ok: [hd1-db3]
+
+TASK [mysql-master : print master status] **************************************
+ok: [hd1-db3] => {
+    "master": {
+        "Binlog_Do_DB": "", 
+        "Binlog_Ignore_DB": "", 
+        "Executed_Gtid_Set": "d9a8da0d-763d-11e6-9740-fa163ebaeedc:1-106722,\nffabde72-763d-11e6-bc39-fa163ebf090a:1-58285693", 
+        "File": "slave1.000004", 
+        "Position": 425412, 
+        "changed": false
+    }
+}
+
+TASK [mysql-slave : Get mysql-slave status] ************************************
+ok: [hd1-db3]
+
+TASK [mysql-slave : print slave status] ****************************************
+ok: [hd1-db3] => {
+    "slave": {
+        "Auto_Position": 1, 
+        "Channel_Name": "", 
+        "Connect_Retry": 60, 
+        "Exec_Master_Log_Pos": 663257, 
+        "Executed_Gtid_Set": "d9a8da0d-763d-11e6-9740-fa163ebaeedc:1-106722,\nffabde72-763d-11e6-bc39-fa163ebf090a:1-58285693", 
+        "Last_Errno": 0, 
+        "Last_Error": "", 
+        "Last_IO_Errno": 0, 
+        "Last_IO_Error": "", 
+        "Last_IO_Error_Timestamp": "", 
+        "Last_SQL_Errno": 0, 
+        "Last_SQL_Error": "", 
+        "Last_SQL_Error_Timestamp": "", 
+        "Master_Bind": "", 
+        "Master_Host": "20.20.20.6", 
+        "Master_Info_File": "mysql.slave_master_info", 
+        "Master_Log_File": "master1.000004", 
+        "Master_Port": 3306, 
+        "Master_Retry_Count": 86400, 
+        "Master_SSL_Allowed": "No", 
+        "Master_SSL_CA_File": "", 
+        "Master_SSL_CA_Path": "", 
+        "Master_SSL_Cert": "", 
+        "Master_SSL_Cipher": "", 
+        "Master_SSL_Crl": "", 
+        "Master_SSL_Crlpath": "", 
+        "Master_SSL_Key": "", 
+        "Master_SSL_Verify_Server_Cert": "No", 
+        "Master_Server_Id": 2523306, 
+        "Master_TLS_Version": "", 
+        "Master_UUID": "d9a8da0d-763d-11e6-9740-fa163ebaeedc", 
+        "Master_User": "repl", 
+        "Read_Master_Log_Pos": 663257, 
+        "Relay_Log_File": "slave1-relay-bin.000012", 
+        "Relay_Log_Pos": 663466, 
+        "Relay_Log_Space": 663799, 
+        "Relay_Master_Log_File": "master1.000004", 
+        "Replicate_Do_DB": "", 
+        "Replicate_Do_Table": "", 
+        "Replicate_Ignore_DB": "", 
+        "Replicate_Ignore_Server_Ids": "", 
+        "Replicate_Ignore_Table": "", 
+        "Replicate_Rewrite_DB": "", 
+        "Replicate_Wild_Do_Table": "", 
+        "Replicate_Wild_Ignore_Table": "", 
+        "Retrieved_Gtid_Set": "d9a8da0d-763d-11e6-9740-fa163ebaeedc:90432-106722,\nffabde72-763d-11e6-bc39-fa163ebf090a:57866100-58285693", 
+        "SQL_Delay": 0, 
+        "SQL_Remaining_Delay": null, 
+        "Seconds_Behind_Master": 0, 
+        "Skip_Counter": 0, 
+        "Slave_IO_Running": "Yes", 
+        "Slave_IO_State": "Waiting for master to send event", 
+        "Slave_SQL_Running": "Yes", 
+        "Slave_SQL_Running_State": "Slave has read all relay log; waiting for more updates", 
+        "Until_Condition": "None", 
+        "Until_Log_File": "", 
+        "Until_Log_Pos": 0, 
+        "changed": false
+    }
+}
+
+TASK [mysql-slave : start slave in slave to start the replication] *************
+ok: [hd1-db3]
+
+PLAY RECAP *********************************************************************
+hd1-db3                    : ok=6    changed=0    unreachable=0    failed=0   
+

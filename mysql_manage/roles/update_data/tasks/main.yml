@@ -1,0 +1,10 @@
+- name: copy sh file
+  copy:
+   src: '/tmp/console.sh'
+   dest: '/tmp/console.sh'
+- name: run sh
+  script: /tmp/console.sh
+  when: "'db1' in inventory_hostname"
+  register: db1
+- name: print update Result
+  debug: var=db1

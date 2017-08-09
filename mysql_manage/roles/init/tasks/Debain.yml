@@ -1,0 +1,10 @@
+- name: Install pip
+  apt:
+    name: '{{ item }}'
+  with_items:
+    - python-pip
+    - python-dev
+    - libffi-dev
+    - libssl-dev
+    - python-mysqldb
+

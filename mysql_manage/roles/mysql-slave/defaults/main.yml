@@ -1,0 +1,2 @@
+IO: Slave_IO_Running == "No"
+SQL: Slave_SQL_Running == "No"

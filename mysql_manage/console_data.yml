@@ -1,0 +1,5 @@
+- hosts: sh1
+  become: yes
+  roles:
+    - update_data
+      tags: update
